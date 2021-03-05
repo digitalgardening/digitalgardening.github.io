@@ -1,2 +1,3 @@
 # digitalgardening.github.io
-Website for mindgarden.fun
+## repo for `mindgarden.fun`
+
