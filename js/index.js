@@ -17,7 +17,8 @@ let navigation = (linkGraph) => {
       //if there's already inbound links to this page
       let oldArray = linkGraph.get(prev); //let's get the array that stored the urls for the old inbound links
       oldArray.push(location.href) //let's create a new entry in the array for the current document url
-      linkGraph.set(prev, oldArray); //let's save the modified array to localStorage under the page name
+      let set = [...new Set(oldArray)]
+      linkGraph.set(prev, set); //let's save the modified array to localStorage under the page name
       console.log("in linkGraph.get(prev)");
     } else if (!linkGraph.get(prev)) {
       //this is if there are no previous inbound links for this page
