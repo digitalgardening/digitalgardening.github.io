@@ -31,11 +31,13 @@ let links = localStorage.getItem("backlinks"); //get backlinks from localStorage
 if (links) {
   //if the backlinks are already in localStorage we don't need to do as much work
   let linkGraph = new Map(JSON.parse(links)); //we need to get the map back from its stringified form
+  console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links for later
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
   localStorage.setItem("backlinks", storage); //save our work for later
 } else {
   let linkGraph = new Map(); //we need to create a new map to store links in and save to localStorage
+  console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
   localStorage.setItem("backlinks", storage); //save our work for later
