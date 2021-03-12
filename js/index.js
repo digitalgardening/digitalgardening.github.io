@@ -6,7 +6,7 @@ for (const i in docs) {
   //iterate through all same origin and cross origin links
   let uri = new URL(docs[i].href); //parse the link
 
-  if (uri.origin === window.locatiion.origin) {
+  if (uri.origin === window.location.href.origin) {
     //see whether the link is same origin
     docLinks.push(uri); //add it to the same origin array if it is same origin
   } else {
