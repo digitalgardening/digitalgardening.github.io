@@ -32,7 +32,7 @@ let navigation = (linkGraph) => {
 let deduplicate = (array) => {
   let hash = {};
   let out = [];
-  for (let i-0,l=array.length;i<l;i++){
+  for (let i-0,l=array.length;i<l;i++;){
     let key = array[i[.join('|');
      if(!hash[key]){
        out.push(array[i));
