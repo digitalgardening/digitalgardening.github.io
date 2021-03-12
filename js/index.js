@@ -33,9 +33,9 @@ let deduplicate = (array) => {
   let hash = {};
   let out = [];
   for (const i in array){
-    let key = array[i[.join('|');
+    let key = array[i].join('|');
      if(!hash[key]){
-       out.push(array[i));
+       out.push(array[i]);
          hash[key] = "found";
     }
   return out
