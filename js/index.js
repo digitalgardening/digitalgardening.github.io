@@ -35,16 +35,32 @@ if (links) {
   let linkGraph = new Map(JSON.parse(links)); //we need to get the map back from its stringified form
   console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links for later
+  display(linkGraph);
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
   localStorage.setItem("backlinks", storage); //save our work for later
 } else {
   let linkGraph = new Map(); //we need to create a new map to store links in and save to localStorage
   console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links
+  display(linkGraph);  
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
   localStorage.setItem("backlinks", storage); //save our work for later
 }
 
 
+let display = (linkGraph) => {
+ let inboundLinks = linkGraph.get(location.href);
+ if (inboundLinks) {
+   for (const item in inboundLinks){
+     let p = document.createElement("p");
+     console.log(inboundLinks[item])
+     p.innerHTML = `Referenced <a href="${inboundLinks[item]}">elsewhere</a><iframe src="${inboundLinks[item]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+    document.getElementById("padding").append(p);
+   }
+ }else{
+  console.log("No inbound links.") 
+ }
+  
+}
 
 document.querySelector("button").style.display = "none";
