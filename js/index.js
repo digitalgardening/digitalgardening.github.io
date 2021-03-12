@@ -2,7 +2,7 @@ let docs = document.links; //get all links in the document
 let docLinks = []; //make an array for storing all same origin links
 
 let len = docs.length;
-for (let i=0; i<len; i++;) {
+for (let i=0, i<len; i++;) {
   //iterate through all same origin and cross origin links
   let uri = new URL(docs[i].href); //parse the link
 
