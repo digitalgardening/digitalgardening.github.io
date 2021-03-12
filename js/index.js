@@ -1,4 +1,4 @@
-let docs = document.links(); //get all links in the document
+let docs = document.links; //get all links in the document 
 let docLinks = []; //make an array for storing all same origin links
 
 for (i in docs) {
