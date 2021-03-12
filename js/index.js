@@ -29,9 +29,16 @@ let navigation = (linkGraph) => {
  }
 };
 
+function uniq(a) {                                                     
+    var seen = {};                                                     
+    return a.filter(function(item) {                                   
+        return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    });                                                                
+}
+
 let display = (linkGraph) => {
  let array = linkGraph.get(location.href);  //this is an array of tuples, for inbound links and title, maybe w/ duplicates
- let inboundLinks = [...new Set(array)]; //remove duplicates from array of arrays
+ let inboundLinks = uniq(array); //remove duplicates from array of arrays
   console.log(inboundLinks === array); //is it removing duplicates?
  if (inboundLinks) {
    for (const item in inboundLinks){
@@ -39,9 +46,9 @@ let display = (linkGraph) => {
      //inboundLinks[item][0] is title
      // inboundLinks[item][1] is the link
 
-//      let p = document.createElement("p");
-//      p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
-//     document.getElementById("padding").append(p);
+      let p = document.createElement("p");
+      p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+     document.getElementById("padding").append(p);
    }
  }else{
   console.log("No inbound links.") 
