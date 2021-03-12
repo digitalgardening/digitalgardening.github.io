@@ -29,8 +29,8 @@ let navigation = (linkGraph) => {
  }
 };
 
-function uniq(a) {                                                     
-    var seen = {};                                                     
+let uniq = (a) => {                                                     
+    let seen = {};                                                     
     return a.filter(function(item) {                                   
         return seen.hasOwnProperty(item) ? false : (seen[item] = true);
     });                                                                
