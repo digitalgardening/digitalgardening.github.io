@@ -21,10 +21,11 @@ let navigation = (linkGraph) => {
       linkGraph.set(prev, set); //let's save the modified array to localStorage under the page name
       console.log("in linkGraph.get(prev)");
     } else if (!linkGraph.get(prev)) {
-      //this is if there are no previous inbound links for this page
-      //let newArray = []; //create a new array to store inbound links
-      //newArray.push(location.href); //let's create a new entry in the array for the current document url
-     // linkGraph.set(prev, newArray); //let's save this new array to localStorage under the page name
+      // this is if there are no previous inbound links for this page
+      let newArray = []; //create a new array to store inbound links
+      newArray.push(location.href); //let's create a new entry in the array for the current document url
+      let set = [...new Set(newArray)]
+      linkGraph.set(prev, set); //let's save this new array to localStorage under the page name
       console.log("!linkGraph.get(prev)");
     }
  }
