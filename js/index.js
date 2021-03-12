@@ -39,9 +39,9 @@ let display = (linkGraph) => {
      //inboundLinks[item][0] is title
      // inboundLinks[item][1] is the link
 
-     let p = document.createElement("p");
-     p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
-    document.getElementById("padding").append(p);
+//      let p = document.createElement("p");
+//      p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+//     document.getElementById("padding").append(p);
    }
  }else{
   console.log("No inbound links.") 
