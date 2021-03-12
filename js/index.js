@@ -39,8 +39,10 @@ let display = (linkGraph) => {
      //item in inboundLinks is a tuple
      //inboundLinks[item][0] is title
      // inboundLinks[item][1] is the link
+     console.log(inboundLinks[item])
+     console.table(inboundLinks[item])
      let p = document.createElement("p");
-     p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+     p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">also here</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
     document.getElementById("padding").append(p);
    }
  }else{
