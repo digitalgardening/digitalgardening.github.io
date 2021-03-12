@@ -22,6 +22,7 @@ let navigation = (linkGraph) => {
     } else if (!linkGraph.get(prev)) {
       //this is if there are no previous inbound links for this page
       let newKey = document.title; //let's create a new key for an inbound link containing the current document title
+      let newObject = {};
       newObject.newKey = location.href; //let's create a new value for that key containing the current document url
       linkGraph.set(prev, newObject); //let's save this new object to localStorage under the page name
     }
