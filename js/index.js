@@ -16,13 +16,15 @@ let navigation = (linkGraph) => {
     if (linkGraph.get(prev)) {
       //if there's already inbound links to this page
       let oldArray = linkGraph.get(prev); //let's get the array that stored the urls for the old inbound links
-      oldArray.push(location.href) //let's create a new entry in the array for the current document url
+      let tuple = [document.title, location.href]; //trying to store title as well as location      
+      oldArray.push(tuple);
       linkGraph.set(prev, oldArray); //let's save the modified array to localStorage under the page name
       console.log("in linkGraph.get(prev)");
     } else if (!linkGraph.get(prev)) {
       // this is if there are no previous inbound links for this page
       let newArray = []; //create a new array to store inbound links
-      newArray.push(location.href); //let's create a new entry in the array for the current document url
+      let tuple = [document.title, location.href]; //trying to store title as well as location
+      newArray.push(tuple);
       linkGraph.set(prev, newArray); //let's save this new array to localStorage under the page name
       console.log("!linkGraph.get(prev)");
     }
@@ -30,13 +32,15 @@ let navigation = (linkGraph) => {
 };
 
 let display = (linkGraph) => {
- let array = linkGraph.get(location.href);
- let inboundLinks = [...new Set(array)];
+ let array = linkGraph.get(location.href);  //this is an array of tuples, for inbound links and title, maybe w/ duplicates
+ let inboundLinks = [...new Set(array)]; //remove duplicates from array of arrays
  if (inboundLinks) {
    for (const item in inboundLinks){
+     //item in inboundLinks is a tuple
+     //inboundLinks[item][0] is title
+     // inboundLinks[item][1] is the link
      let p = document.createElement("p");
-     console.log(inboundLinks[item])
-     p.innerHTML = `Referenced <a href="${inboundLinks[item]}">elsewhere</a><iframe src="${inboundLinks[item]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+     p.innerHTML = `Referenced <a href="${inboundLinks[item][1]}">inboundLinks[item][0]</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
     document.getElementById("padding").append(p);
    }
  }else{
