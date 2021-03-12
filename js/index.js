@@ -5,12 +5,8 @@ let docLinks = []; //make an array for storing all same origin links
 for (const i in docs) {
   //iterate through all same origin and cross origin links
   let uri = docs[i].href; //get the link referenced (docs[i] is the <a> element itself)
-
-  if (!uri.toString().includes("://")) { //trying to ensure the uri is just a relative path
-    docLinks.push(uri); //add it to the array of approved urls
-  } else {
-    console.log(uri);
-  }
+  //could not find out how to weed out cross origin urls
+    docLinks.push(uri); //add to the array of urls
     
 }
 
