@@ -1,0 +1,115 @@
+ul[role="menubar"],
+ul[role="menubar"] li {
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+ul[role="menubar"] li {
+  list-style: none;
+  min-width: 4rem;
+  justify-content: center;
+  font-size: 1rem;
+  font-family: "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 700;
+  border-right: 1px solid #ededed;
+  line-height: normal;
+}
+
+button,
+input[type="text"] {
+  font-family: "Segoe UI", Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  border: 0px transparent;
+  border-radius: 0.3em;
+  padding: 0.3em;
+}
+
+input[type="text"] {
+  border: dashed brown 1px;
+}
+
+details {
+  margin-bottom: 1.5em;
+}
+
+button {
+  background: transparent;
+  font-size: 0.9em;
+}
+
+details:focus,
+summary:focus {
+  outline: 0px transparent;
+}
+
+ul[role="menu"] {
+  display: none;
+  position: absolute;
+  top: 30px;
+}
+button:hover {
+  text-shadow: 0px 0px 20px brown;
+}
+li[role="menuitem"]:hover {
+  background: #f5f6fb;
+  cursor: pointer;
+  color: black;
+}
+
+li[role="menuitem"]:first-of-type {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+li[role="menuitem"]:last-of-type {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-right: none;
+}
+
+ul[role="menubar"] {
+  position: absolute;
+  width: min-content;
+  height: 2.5rem;
+  z-index: 11;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0 1px rgba(15, 15, 15, 0.05),
+    0 3px 6px rgba(15, 15, 15, 0.1), 0 9px 24px rgba(15, 15, 15, 0.2);
+  box-shadow: 0 0 0 1px rgba(15, 15, 15, 0.05), 0 3px 6px rgba(15, 15, 15, 0.1),
+    0 9px 24px rgba(15, 15, 15, 0.2);
+  border-radius: 0.5rem;
+  padding-left: 0px;
+  user-select: none;
+  display: none;
+}
+
+input[type="color"] {
+  position: relative;
+  left: -20px;
+  top: 0px;
+  padding: 5px;
+}
+
+input[type="link"] {
+  position: relative;
+  left: 70px;
+  top: 0px;
+  padding: 5px;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.hover {
+  display: none;
+  border-radius: 0.5em;
+  border: 1.5px dashed black;
+  position: absolute;
+  transform: scale(0.5) translate(-10%, -160%);
+}
+
+a:hover + .hover {
+  display: block;
+}

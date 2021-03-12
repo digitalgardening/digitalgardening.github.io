@@ -1,0 +1,75 @@
+<head>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/menu.css">
+
+    <meta charset="utf-8">
+    <title>and now another</title>
+  </head>
+  <body>
+    <section id="flex-original">
+      <ul id="menubar1" role="menubar" aria-label="Text Formatting" style="display: none; left: 40px; top: 263px;">
+        <li role="menuitem" aria-haspopup="false" aria-label="close menu" id="transclude" tabindex="0">
+          🔗
+        </li>
+        <li role="menuitem" aria-haspopup="false" id="bold" aria-label="bold" tabindex="0">
+          <span><strong>B</strong></span>
+        </li>
+        <li role="menuitem" aria-haspopup="false" id="italic" aria-label="italic" tabindex="0">
+          <span><em>i</em></span>
+        </li>
+        <li role="menuitem" aria-haspopup="true" id="hiliteColor" tabindex="0">
+          🎨
+          <ul role="menu" aria-label="Text Color">
+            <li>
+              <input type="color" aria-label="color input" tabindex="0">
+            </li>
+          </ul>
+        </li>
+
+        <li role="menuitem" aria-haspopup="false" id="close" aria-label="close menu" tabindex="0">
+          close
+        </li>
+      </ul>
+      <ul id="menubar2" role="menubar" aria-label="Text Insertion" style="display: none; top: 210px;">
+        <li role="menuitem" aria-haspopup="false" id="h2" aria-label="close menu" tabindex="0">
+          H2
+        </li>
+        <li role="menuitem" aria-haspopup="false" id="h3" aria-label="close menu" tabindex="0">
+          H3
+        </li>
+        <li role="menuitem" aria-haspopup="false" id="ul" aria-label="close menu" tabindex="0">
+          •
+        </li>
+
+        <li role="menuitem" aria-haspopup="false" aria-label="close menu" id="search" tabindex="0">
+          🔎
+        </li>
+
+        <li role="menuitem" aria-haspopup="false" aria-label="multiple windows" id="newWindow" tabindex="0">
+          📚
+        </li>
+
+        <li role="menuitem" aria-haspopup="false" id="close" aria-label="close menu" tabindex="0">
+          close
+        </li>
+      </ul>
+
+      <div id="padding">
+        <span id="icon" class="editable" data-placeholder="🌱" contenteditable="true"></span>
+        <h1 class="editable" id="title" contenteditable="true" data-placeholder="Edit this title">and now another</h1>
+        <main id="editme" class="editable" contenteditable="" data-placeholder="Type / for commands" spellcheck="false"><a href="/Thu%20Mar%2011%202021%2019:28:42%20GMT-0500%20(Eastern%20Standard%20Time).html">huzzah</a><iframe src="/Thu%20Mar%2011%202021%2019:28:42%20GMT-0500%20(Eastern%20Standard%20Time).html" loading="lazy" class="hover" height="100%" width="50%"></iframe></main>
+        <br><br>
+        <br><br>
+        <button role="menuitem" aria-haspopup="false" id="archiveThis" aria-label="save file" tabindex="0">
+          💾
+        </button>
+      </div>
+
+      <script src="js/index.js" type="module"></script>
+    </section>
+
+    <iframe id="flex-html" src="new.html" loading="lazy" height="100%" width="100%" seamless="" style="display: none"></iframe>
+    <iframe id="flex-pdf" src="load/pdf.html" loading="lazy" height="100%" width="100%" seamless="" style="display: none"></iframe>
+  
+
+</body>
