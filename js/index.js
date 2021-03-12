@@ -42,7 +42,7 @@ let display = (linkGraph) => {
      console.log(inboundLinks[item])
      console.table(inboundLinks[item])
      let p = document.createElement("p");
-     p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">also here</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+     p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
     document.getElementById("padding").append(p);
    }
  }else{
@@ -52,7 +52,7 @@ let display = (linkGraph) => {
 
 
 
-let links = localStorage.getItem("backlinks"); //get backlinks from localStorage (we'll see if they exist)
+let links = sessionStorage.getItem("backlinks"); //get backlinks from localStorage (we'll see if they exist)
 if (links) {
   //if the backlinks are already in localStorage we don't need to do as much work
   let linkGraph = new Map(JSON.parse(links)); //we need to get the map back from its stringified form
@@ -60,14 +60,14 @@ if (links) {
   navigation(linkGraph); //do the work of storing inbound links for later
   display(linkGraph);
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
-  localStorage.setItem("backlinks", storage); //save our work for later
+  sessionStorage.setItem("backlinks", storage); //save our work for later
 } else {
   let linkGraph = new Map(); //we need to create a new map to store links in and save to localStorage
   console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links
   display(linkGraph);  
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
-  localStorage.setItem("backlinks", storage); //save our work for later
+  sessionStorage.setItem("backlinks", storage); //save our work for later
 }
 
 
