@@ -1,9 +1,8 @@
 let docs = document.links; //get all links in the document 
 let docLinks = []; //make an array for storing all same origin links
 
-let len = docs.length;
-let i;
-for (i = 0; i < len; i++) {
+
+for (const i in docs) {
   //iterate through all same origin and cross origin links
   let uri = new URL(docs[i].href); //parse the link
 
@@ -33,9 +32,8 @@ if (links) {
 
 let navigation = (linkGraph) => {
   //to be safe, pass the linkGraph parameter to the function directly
-  let z;
-  let leng = docLinks.length;
-  for (z = 0; z<leng; z++;) {
+ 
+  for (const z in docLinks) {
     let prev = docLinks[z]; //are there already inbound links for this page stored in localStorage? that's what we're asking
     if (linkGraph.get(prev)) {
       //if there's already inbound links to this page
