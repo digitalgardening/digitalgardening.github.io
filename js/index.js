@@ -16,14 +16,12 @@ let navigation = (linkGraph) => {
     if (linkGraph.get(prev)) {
       //if there's already inbound links to this page
       let oldObject = linkGraph.get(prev); //let's get the object that stored the title and url for the old inbound links
-      let newKey = document.title; //let's create a new key for an inbound link containing the current document title
-      oldObject.newKey = location.href; //let's create a new value for that key containing the current document url
+      oldObject[document.title] = location.href; //let's create a new value for that key containing the current document url
       linkGraph.set(prev, oldObject); //let's save the modified object to localStorage under the page name
     } else if (!linkGraph.get(prev)) {
       //this is if there are no previous inbound links for this page
-      let newKey = document.title; //let's create a new key for an inbound link containing the current document title
       let newObject = {};
-      newObject.newKey = location.href; //let's create a new value for that key containing the current document url
+      newObject[document.title] = location.href; //let's create a new value for that key containing the current document url
       linkGraph.set(prev, newObject); //let's save this new object to localStorage under the page name
     }
  }
