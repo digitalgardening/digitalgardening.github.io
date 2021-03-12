@@ -30,7 +30,8 @@ let navigation = (linkGraph) => {
 };
 
 let display = (linkGraph) => {
- let inboundLinks = linkGraph.get(location.href);
+ let array = linkGraph.get(location.href);
+ let inboundLinks = [...new Set(array)];
  if (inboundLinks) {
    for (const item in inboundLinks){
      let p = document.createElement("p");
