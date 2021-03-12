@@ -19,14 +19,12 @@ let navigation = (linkGraph) => {
       let tuple = [document.title, location.href]; //trying to store title as well as location      
       oldArray.push(tuple);
       linkGraph.set(prev, oldArray); //let's save the modified array to localStorage under the page name
-      console.log("in linkGraph.get(prev)");
     } else if (!linkGraph.get(prev)) {
       // this is if there are no previous inbound links for this page
       let newArray = []; //create a new array to store inbound links
       let tuple = [document.title, location.href]; //trying to store title as well as location
       newArray.push(tuple);
       linkGraph.set(prev, newArray); //let's save this new array to localStorage under the page name
-      console.log("!linkGraph.get(prev)");
     }
  }
 };
@@ -34,13 +32,13 @@ let navigation = (linkGraph) => {
 let display = (linkGraph) => {
  let array = linkGraph.get(location.href);  //this is an array of tuples, for inbound links and title, maybe w/ duplicates
  let inboundLinks = [...new Set(array)]; //remove duplicates from array of arrays
+  console.log(inboundLinks)
  if (inboundLinks) {
    for (const item in inboundLinks){
      //item in inboundLinks is a tuple
      //inboundLinks[item][0] is title
      // inboundLinks[item][1] is the link
-     console.log(inboundLinks[item])
-     console.table(inboundLinks[item])
+
      let p = document.createElement("p");
      p.innerHTML = `&#10228; <a href="${inboundLinks[item][1]}">${inboundLinks[item][0]}</a><iframe src="${inboundLinks[item][1]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
     document.getElementById("padding").append(p);
@@ -56,14 +54,12 @@ let links = sessionStorage.getItem("backlinks"); //get backlinks from localStora
 if (links) {
   //if the backlinks are already in localStorage we don't need to do as much work
   let linkGraph = new Map(JSON.parse(links)); //we need to get the map back from its stringified form
-  console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links for later
   display(linkGraph);
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
   sessionStorage.setItem("backlinks", storage); //save our work for later
 } else {
   let linkGraph = new Map(); //we need to create a new map to store links in and save to localStorage
-  console.log(linkGraph);
   navigation(linkGraph); //do the work of storing inbound links
   display(linkGraph);  
   let storage = JSON.stringify(Array.from(linkGraph.entries())); //stringify our work for the browser
