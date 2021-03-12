@@ -15,14 +15,14 @@ let navigation = (linkGraph) => {
     let prev = docLinks[z]; //are there already inbound links for this page stored in localStorage? that's what we're asking
     if (linkGraph.get(prev)) {
       //if there's already inbound links to this page
-      let oldObject = linkGraph.get(prev); //let's get the object that stored the title and url for the old inbound links
-      oldObject[document.title] = location.href; //let's create a new value for that key containing the current document url
-      linkGraph.set(prev, oldObject); //let's save the modified object to localStorage under the page name
+      let oldArray = linkGraph.get(prev); //let's get the array that stored the urls for the old inbound links
+      oldArray.push(location.href) //let's create a new entry in the array for the current document url
+      linkGraph.set(prev, oldArray); //let's save the modified array to localStorage under the page name
     } else if (!linkGraph.get(prev)) {
       //this is if there are no previous inbound links for this page
-      let newObject = {};
-      newObject[document.title] = location.href; //let's create a new value for that key containing the current document url
-      linkGraph.set(prev, newObject); //let's save this new object to localStorage under the page name
+      let newArray = []; //create a new array to store inbound links
+      newArray.push(location.href); //let's create a new entry in the array for the current document url
+      linkGraph.set(prev, newArray); //let's save this new array to localStorage under the page name
     }
  }
 };
