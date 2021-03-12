@@ -11,7 +11,7 @@ for (const i in docs) {
     docLinks.push(uri); //add it to the same origin array if it is same origin
   } else {
     console.log(uri.origin);
-    console.log(window.locatiion.origin);
+    console.log(window.location.origin);
     console.log(docs[i]);
   }
 }
