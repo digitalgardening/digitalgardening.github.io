@@ -6,9 +6,27 @@ for (const i in docs) {
   //iterate through all same origin and cross origin links
   let uri = docs[i].href; //get the link referenced (docs[i] is the <a> element itself)
   //could not find out how to weed out cross origin urls
-    docLinks.push(uri); //add to the array of urls
-    
+    docLinks.push(uri); //add to the array of urls   
 }
+
+let navigation = (linkGraph) => {
+  //to be safe, pass the linkGraph parameter to the function directly
+  for (const z in docLinks) {
+    let prev = docLinks[z]; //are there already inbound links for this page stored in localStorage? that's what we're asking
+    if (linkGraph.get(prev)) {
+      //if there's already inbound links to this page
+      let oldObject = linkGraph.get(prev); //let's get the object that stored the title and url for the old inbound links
+      let newKey = document.title; //let's create a new key for an inbound link containing the current document title
+      oldObject.newKey = location.href; //let's create a new value for that key containing the current document url
+      linkGraph.set(prev, oldObject); //let's save the modified object to localStorage under the page name
+    } else if (!linkGraph.get(prev)) {
+      //this is if there are no previous inbound links for this page
+      let newKey = document.title; //let's create a new key for an inbound link containing the current document title
+      newObject.newKey = location.href; //let's create a new value for that key containing the current document url
+      linkGraph.set(prev, newObject); //let's save this new object to localStorage under the page name
+    }
+ }
+};
 
 let links = localStorage.getItem("backlinks"); //get backlinks from localStorage (we'll see if they exist)
 if (links) {
@@ -24,24 +42,6 @@ if (links) {
   localStorage.setItem("backlinks", storage); //save our work for later
 }
 
-let navigation = (linkGraph) => {
-  //to be safe, pass the linkGraph parameter to the function directly
- 
-  for (const z in docLinks) {
-    let prev = docLinks[z]; //are there already inbound links for this page stored in localStorage? that's what we're asking
-    if (linkGraph.get(prev)) {
-      //if there's already inbound links to this page
-      let oldObject = linkGraph.get(prev); //let's get the object that stored the title and url for the old inbound links
-      let newKey = document.title; //let's create a new key for an inbound link containing the current document title
-      oldObject.newKey = location.href; //let's create a new value for that key containing the current document url
-      linkGraph.set(prev, oldObject); //let's save the modified object to localStorage under the page name
-    } else if (!linkGraph.get(prev)) {
-      //this is if there are no previous inbound links for this page
-      let newKey = document.title; //let's create a new key for an inbound link containing the current document title
-      newObject.newKey = location.href; //let's create a new value for that key containing the current document url
-      linkGraph.set(prev, newObject); //let's save this new object to localStorage under the page name
-    }
-  }
-};
+
 
 document.querySelector("button").style.display = "none";
