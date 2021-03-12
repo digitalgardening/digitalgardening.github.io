@@ -6,7 +6,7 @@ for (const i in docs) {
   //iterate through all same origin and cross origin links
   let uri = docs[i].href; //get the link referenced (docs[i] is the <a> element itself)
 
-  if (!Boolean(new URL(uri))) { //the uri is just a relative path
+  if (new URL(uri)==undefined) { //the uri is just a relative path
     docLinks.push(uri); //add it to the array of approved urls
   } else {
     console.log(uri);
