@@ -32,7 +32,7 @@ let navigation = (linkGraph) => {
 let display = (linkGraph) => {
  let array = linkGraph.get(location.href);  //this is an array of tuples, for inbound links and title, maybe w/ duplicates
  let inboundLinks = [...new Set(array)]; //remove duplicates from array of arrays
-  console.log(inboundLinks)
+  console.log(inboundLinks === array); //is it removing duplicates?
  if (inboundLinks) {
    for (const item in inboundLinks){
      //item in inboundLinks is a tuple
