@@ -29,6 +29,22 @@ let navigation = (linkGraph) => {
  }
 };
 
+let display = (linkGraph) => {
+ let inboundLinks = linkGraph.get(location.href);
+ if (inboundLinks) {
+   for (const item in inboundLinks){
+     let p = document.createElement("p");
+     console.log(inboundLinks[item])
+     p.innerHTML = `Referenced <a href="${inboundLinks[item]}">elsewhere</a><iframe src="${inboundLinks[item]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
+    document.getElementById("padding").append(p);
+   }
+ }else{
+  console.log("No inbound links.") 
+ }
+};
+
+
+
 let links = localStorage.getItem("backlinks"); //get backlinks from localStorage (we'll see if they exist)
 if (links) {
   //if the backlinks are already in localStorage we don't need to do as much work
@@ -48,19 +64,6 @@ if (links) {
 }
 
 
-let display = (linkGraph) => {
- let inboundLinks = linkGraph.get(location.href);
- if (inboundLinks) {
-   for (const item in inboundLinks){
-     let p = document.createElement("p");
-     console.log(inboundLinks[item])
-     p.innerHTML = `Referenced <a href="${inboundLinks[item]}">elsewhere</a><iframe src="${inboundLinks[item]}" loading="lazy" class="hover" width="50%" height="100%"></iframe>`
-    document.getElementById("padding").append(p);
-   }
- }else{
-  console.log("No inbound links.") 
- }
-  
-}
+
 
 document.querySelector("button").style.display = "none";
